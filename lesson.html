@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>차시 · 선물포장 기초 과정</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <a class="home" href="index.html">← 강의 목차</a>
+      <span class="where">선물포장 기초 과정</span>
+    </div>
+  </div>
+
+  <main class="wrap" id="main"></main>
+
+  <footer>© 2026 선물포장 기초 과정</footer>
+
+  <script src="data.js"></script>
+  <script>
+    const no = parseInt(new URLSearchParams(location.search).get("no"), 10) || 1;
+    const idx = Math.min(Math.max(no, 1), LESSONS.length) - 1;
+    const l = LESSONS[idx];
+    document.title = (idx + 1) + "차시 " + l.title + " · 선물포장 기초 과정";
+
+    const prev = LESSONS[idx - 1], next = LESSONS[idx + 1];
+    const pagerItem = (item, n, cls, label) => item
+      ? '<a class="' + cls + '" href="lesson.html?no=' + n + '"><small>' + label + '</small><b>' + n + '차시 ' + item.title + '</b></a>'
+      : '<span></span>';
+
+    document.getElementById("main").innerHTML =
+      '<div class="lesson-head">' +
+        '<span class="no badge">' + (idx + 1) + ' / ' + LESSONS.length + ' 차시</span>' +
+        '<h1>' + l.title + '</h1>' +
+        (l.optional ? '<span class="optnote">시간이 되면 진행하는 차시입니다</span>' : '') +
+      '</div>' +
+      '<section>' +
+        '<h2 class="sec-title">이번 차시에서 다루는 것</h2>' +
+        '<div class="points">' +
+          l.points.map((p, i) => '<div class="point"><span class="n">' + (i + 1) + '</span>' + p + '</div>').join("") +
+        '</div>' +
+      '</section>' +
+      '<nav class="pager">' +
+        pagerItem(prev, idx, "prev", "← 이전 차시") +
+        pagerItem(next, idx + 2, "next", "다음 차시 →") +
+      '</nav>' +
+      '<a class="tohome" href="index.html">강의 목차로 돌아가기</a>';
+  </script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+:root {
+  --bg: #0b0f0c;
+  --bg-2: #111712;
+  --card: #151c17;
+  --card-hi: #1b241d;
+  --ink: #eef5ea;
+  --ink-soft: #a3b19f;
+  --line: #26322a;
+  --neon: #c6ff3d;
+  --neon-deep: #a6e01c;
+  --neon-soft: rgba(198, 255, 61, 0.12);
+  --neon-line: rgba(198, 255, 61, 0.45);
+  --neon-glow: 0 0 0 1px rgba(198, 255, 61, 0.35), 0 0 24px rgba(198, 255, 61, 0.18);
+  --cyan: #5ef2d6;
+  --cyan-soft: rgba(94, 242, 214, 0.12);
+  --on-neon: #0b0f0c;
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 19px; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(198, 255, 61, 0.10), transparent 60%),
+    radial-gradient(700px 400px at -10% 20%, rgba(94, 242, 214, 0.06), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 18px; }
+
+/* ---------- 상단 배너 ---------- */
+.hero {
+  position: relative;
+  padding: 60px 0 52px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  background-image:
+    linear-gradient(rgba(198, 255, 61, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198, 255, 61, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: center;
+}
+.hero .badge {
+  display: inline-block;
+  background: var(--neon-soft);
+  color: var(--neon);
+  border: 1px solid var(--neon-line);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+.hero h1 {
+  font-size: 2.3rem;
+  line-height: 1.3;
+  margin: 18px 0 8px;
+  color: var(--ink);
+}
+.hero h1::after {
+  content: "";
+  display: block;
+  width: 64px; height: 4px;
+  margin: 16px auto 0;
+  border-radius: 4px;
+  background: var(--neon);
+  box-shadow: 0 0 16px var(--neon);
+}
+.hero p { margin: 0; color: var(--ink-soft); font-size: 1.05rem; }
+
+/* ---------- 섹션 ---------- */
+section { padding: 40px 0 8px; }
+.sec-title { font-size: 1.55rem; margin: 0 0 4px; color: var(--ink); }
+.sec-title::before {
+  content: "";
+  display: inline-block;
+  width: 10px; height: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+  border-radius: 3px;
+  background: var(--neon);
+  box-shadow: 0 0 10px var(--neon);
+}
+.sec-desc { margin: 0 0 20px; color: var(--ink-soft); }
+.sec-title + .info-grid,
+.sec-title + .chips,
+.sec-title + .download { margin-top: 16px; }
+
+/* 개요 */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+.info {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px 20px;
+}
+.info .label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--neon);
+  letter-spacing: 0.02em;
+}
+.info .value { font-size: 1.15rem; font-weight: 700; margin-top: 4px; }
+.info ul { margin: 4px 0 0; padding-left: 1.1em; font-weight: 700; font-size: 1.1rem; }
+.info li::marker { color: var(--neon); }
+
+/* 차시 카드 */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--card-hi), var(--card));
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 22px 22px 18px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.card:hover, .card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--neon-line);
+  box-shadow: var(--shadow), var(--neon-glow);
+  outline: none;
+}
+.card .no {
+  align-self: flex-start;
+  background: var(--neon-soft);
+  color: var(--neon);
+  border: 1px solid var(--neon-line);
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 3px 12px;
+  border-radius: 999px;
+}
+.card .no.opt { background: var(--cyan-soft); color: var(--cyan); border-color: rgba(94, 242, 214, 0.45); }
+.card h3 { font-size: 1.3rem; line-height: 1.4; margin: 12px 0 6px; }
+.card .sum { color: var(--ink-soft); margin: 0 0 14px; flex: 1; }
+.card .go { color: var(--neon); font-weight: 700; text-align: right; }
+
+/* 강의 자료 다운로드 */
+.download {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(180deg, var(--card-hi), var(--card));
+  border: 1px solid var(--neon-line);
+  border-radius: 20px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+  transition: box-shadow .15s ease;
+}
+.download:hover { box-shadow: var(--shadow), var(--neon-glow); }
+.download .icon {
+  flex: none; width: 52px; height: 52px;
+  display: grid; place-items: center;
+  background: var(--neon-soft); border-radius: 14px; font-size: 1.5rem;
+}
+.download .txt { flex: 1; min-width: 0; }
+.download .txt b { display: block; font-size: 1.15rem; }
+.download .txt small { color: var(--ink-soft); font-size: 0.9rem; }
+.download .btn {
+  flex: none;
+  background: var(--neon); color: var(--on-neon); font-weight: 800;
+  border-radius: 12px; padding: 10px 18px;
+  box-shadow: 0 0 18px rgba(198, 255, 61, 0.35);
+}
+.download:hover .btn { background: var(--neon-deep); }
+@media (max-width: 600px) {
+  .download { flex-wrap: wrap; }
+  .download .btn { width: 100%; text-align: center; padding: 12px; }
+}
+
+/* 준비물 */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+footer {
+  margin-top: 48px;
+  padding: 28px 0 40px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- 차시 페이지 ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 5;
+  background: rgba(11, 15, 12, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 12px; }
+.topbar .home { font-weight: 700; color: var(--neon); white-space: nowrap; }
+.topbar .where { color: var(--ink-soft); font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.lesson-head { padding: 40px 0 8px; }
+.lesson-head .badge {
+  display: inline-block;
+  background: var(--neon-soft);
+  color: var(--neon);
+  border: 1px solid var(--neon-line);
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+.lesson-head h1 { font-size: 2.1rem; line-height: 1.35; margin: 14px 0 6px; color: var(--ink); }
+.lesson-head .optnote {
+  display: inline-block;
+  margin-top: 8px;
+  background: var(--cyan-soft);
+  color: var(--cyan);
+  border-radius: 12px;
+  padding: 6px 14px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.points { display: grid; gap: 14px; margin-top: 16px; }
+.point {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--neon);
+  border-radius: 16px;
+  padding: 20px 22px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.point .n {
+  flex: none;
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  background: var(--neon);
+  color: var(--on-neon);
+  border-radius: 50%;
+  font-size: 1rem;
+  box-shadow: 0 0 14px rgba(198, 255, 61, 0.4);
+}
+
+.pager {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-top: 36px;
+}
+.pager a, .pager span {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 18px;
+  min-height: 72px;
+}
+.pager a:hover { border-color: var(--neon-line); }
+.pager small { display: block; color: var(--ink-soft); font-size: 0.8rem; }
+.pager b { font-size: 1rem; }
+.pager .next { text-align: right; }
+.pager span { visibility: hidden; }
+.tohome {
+  display: block; text-align: center; margin-top: 14px;
+  background: var(--neon); color: var(--on-neon); font-weight: 800;
+  border-radius: 16px; padding: 14px;
+  box-shadow: 0 0 20px rgba(198, 255, 61, 0.3);
+}
+.tohome:hover { background: var(--neon-deep); }
+
+/* ---------- 휴대폰 ---------- */
+@media (max-width: 600px) {
+  html { font-size: 18px; }
+  .hero { padding: 44px 0 38px; }
+  .hero h1 { font-size: 1.9rem; }
+  .lesson-head h1 { font-size: 1.75rem; }
+  .point { font-size: 1.15rem; padding: 18px; }
+  .cards { grid-template-columns: 1fr; }
+}
